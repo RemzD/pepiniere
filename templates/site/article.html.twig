@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<article>
+    <h2>{{ article.title }}</h2>
+    <div class="metadata">ecrit le {{ article.createdAt | date('d/m/y') }} à {{ article.createdAt | date('H:i') }}</div>
+    <div class="content">
+        <img src="{{ vich_uploader_asset(article, 'imageFile') | imagine_filter('rectangle_thumbnail_large') }}" alt="">
+        {{ article.content | raw }}
+    </div>
+</article>
+
+{% endblock %}

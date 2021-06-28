@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Demandez votre réservation{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.2/main.min.css"
+    integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+    <style>
+        li{
+            color: #d9534f;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="gite col-12 mt-5 mb-5">
+    <h2 class="title text-center">Le gîte</h2>
+    <div class="separator disabled-on-mobile"></div>
+    <p class="text--content">À 10 minutes de Pont d'Ouilly et de sa base nautique, ainsi que de la Roche d'Oëtre et ses
+        randonnées à pied où à dos de vache, venez découvrir la Pépinière: Un gîte familial au milieu d'un Eco-lieu
+        (Permaculture, agroécologie) en création ...
+        Dans un écrin de verdure totalement protégé, cet ancien pressoir vous permettra de vous ressourcer en toute
+        quiétude ; un jardin privatif agrémenté d'un bassin naturel en sera le cadre idéal.</p>
+    <h3 class="subtitle">Le logement</h3>
+    <p class="text-content">Maison indépendante de 90 m2 à proximité de celle des propriétaires:
+        Cuisine, salon avec cheminée, séjour dans la véranda, 1 chambre avec lit double (140x190), 1 chambre avec lit
+        double sur mezzanine(140x190), 1 chambre avec 2 lits simples (90x190), 1 salle de bain avec douche. Terrasse
+        privative avec barbecue donnant sur un jardin. Wifi, lave-linge (linge de maison non fourni), chauffage central,
+        écran plat avec lecteur dvd.</p>
+</div>
+
+<div class="prices mt-5 mb-5">
+    <h2 class="title text-center">Tarifs et réservations</h2>
+    <div class="separator disabled-on-mobile"></div>
+    <div class="price--cards row">
+        <div class="full-season col-6 mb-5">
+            <div class="card">
+                <img class="card-img-top" src="{{ asset('images/pep3.jpg') }}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Pleine saison</h5>
+                  <p class="card-text">En pleine saison (Juillet/Août) vous pouvez réserver à la semaine du samedi 17h au samedi suivant 10h.</p>
+                  <p class="card-text price"><strong>600€/semaine</strong></p>
+                  <p class="card-text cleaning-price"><strong> forfait ménage: 35€</strong></p>
+                  <a href="#calendrier" class="btn btn-primary">Voir les dates</a>
+                </div>
+              </div>
+        </div>
+        <div class="off-season col-6 mb-5">
+            <div class="card">
+                <img class="card-img-top" src="{{ asset('images/pep4.jpg') }}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Hors-saison</h5>
+                  <p class="card-text">Hors saison, il est possible de réserver à la nuit du lundi au dimanche.Arrivée à partir de 17h départ à partir de 10h.</p>
+                  <p class="card-text price"><strong>65€/nuit</strong></p>
+                  <p class="card-text cleaning-price"><strong> forfait ménage: 35€</strong></p>
+                  <a href="#calendrier" class="btn btn-primary">Voir les dates</a>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+</div>
+
+<div id="calendrier" class="mt-5"></div>
+
+
+
+{% for message in app.flashes('success') %}
+<div class="alert alert-success">
+    {{ message }}
+</div>
+{% endfor %}
+
+{% if not formView.vars.valid %}
+<div class="alert alert-danger mt-5">
+    Merci de remplir correctement tous les champs de la demande.
+</div>
+{% endif %}
+<div id="contactForm" class="mt-5 mb-4 card card-6">
+    <div class="card-heading">
+        <h2 class="title">Demandez votre réservation</h2>
+    </div>
+    <div class="card-body">
+
+        {{form_start(formView)}}
+        <div class="row">
+            <div class="col-md-6">
+                {{form_label(formView.firstname, 'prénom')}}
+                {{form_widget(formView.firstname, {'attr': {'class':'input-group'}})}}
+                {{form_errors(formView.firstname)}}
+            </div>
+            <div class="col-md-6">
+                {{form_label(formView.lastname, 'nom')}}
+                {{form_widget(formView.lastname, {'attr': {'class':'input-group'}})}}
+                {{form_errors(formView.lastname)}}
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{form_label(formView.phone, 'téléphone')}}
+                {{form_widget(formView.phone, {'attr': {'class':'input-group'}})}}
+                {{form_errors(formView.phone)}}
+            </div>
+            <div class="col-md-6">
+                {{form_label(formView.email, 'email')}}
+                {{form_widget(formView.email, {'attr': {'class':'input-group'}})}}
+                {{form_errors(formView.email)}}
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{form_label(formView.startDate, 'début de séjour')}}
+                {{form_widget(formView.startDate, {'attr': {'class':'input-group'}})}}
+                {{form_errors(formView.startDate)}}
+
+            </div>
+            <div class="col-md-6">
+                {{form_label(formView.endDate, 'fin de séjour')}}
+                {{form_widget(formView.endDate, {'attr': {'class':'input-group'}})}}
+                {{form_errors(formView.endDate)}}
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{form_label(formView.message, 'message')}}
+                {{form_widget(formView.message, {'attr':{'class': 'input-group'}})}}
+                {{form_errors(formView.message)}}
+
+            </div>
+        </div>
+        <div class="row mt-2">
+            <button class="btn btn-primary col-md-12">Envoyer</button>
+        </div>
+        {{form_end(formView)}}
+    </div>
+
+    {% endblock %}
+
+    {% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.2/main.min.js"
+        integrity="sha256-mMw9aRRFx9TK/L0dn25GKxH/WH7rtFTp+P9Uma+2+zc=" crossorigin="anonymous"></script>
+
+    <script>
+        window.onload = () => {
+            let calendarElement = document.querySelector("#calendrier");
+
+            let calendar = new FullCalendar.Calendar(calendarElement, {
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                buttonText: {
+                    today:    'Aujourd\'hui',
+                    month:    'Mois',
+                    week:     'Semaine',
+                    day:      'Jour',
+                    list:     'Liste'
+                },
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: {{ data | raw}}
+            })
+
+        calendar.render();
+    };
+    </script>
+    {% endblock %}

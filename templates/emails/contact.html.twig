@@ -1,0 +1,58 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+<style>
+    .container {
+        background-color: #63835E;
+        padding: 2em;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        padding: 1rem;
+        background-color: #ffff;
+        width: 80%;
+        height: 80%;
+    }
+
+    img {
+        max-width: 60%;
+    }
+
+</style>
+{% endblock %}
+
+<div class="container">
+    <div class="card card-6 text-center my-auto mx-auto"id="card">
+        <div class="card-heading">
+            <div class="title">
+                <img src="{{ asset('images/green_logo.png') | imagine_filter('square_thumbnail_medium')}}" alt="logo">
+                <h2>Une demande de réservation est arrivée !</h2>
+            </div>
+            <div class="card-body text-center">
+                <h3 class="col-16">Du {{contact.startDate| date('d-m-Y')}} au {{contact.endDate| date('d-m-Y')}}</h3>
+                <p>nom: {{contact.lastname}} | prénom: {{contact.firstname}}</p>
+                <p>téléphone: <a href="tel:{{contact.phone}}">{{contact.phone}}</a> | email: <a
+                        href="mailto:{{contact.email}}">{{contact.email}}</a></p>
+                <p>{{contact.message}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+{% endblock %}

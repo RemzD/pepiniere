@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&Roboto&display=swap');
+
+*{
+    font-family: 'Roboto', sans-serif;
+
+}
+
+p{
+    font-weight: 500;
+}
+
+.disabled-on-mobile{
+    display: none;
+}
+
+.title{
+    font-size: 35px;
+    color: #195834;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.subtitle{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.card-img-top{
+    height: 261px;
+}
+
+
+.navbar{
+    background-color: RGB(99 ,131 ,94);
+    color: white;
+}
+
+.navbar a{
+    color: white;
+}
+
+.presentation--img{
+    box-shadow: 0 3px 86px #00000029;
+    padding: 0;
+}
+
+.article img:hover{
+    transform: scale(1.075);
+    transition: 0.3 ease-out;
+}
+
+#calendrier{
+    height: 70vh;
+    margin: auto;
+    font-size: 11px;
+}
+
+#calendrier a{
+    color: #9f6565;
+}
+
+table .fc-scrollgrid-liquid{
+
+    height:auto !important;
+
+}
+
+.fc-button-primary {
+
+    background-color:#936456 !important;
+
+}
+
+#contactForm{
+    border: none;
+}
+
+
+.presentation img{
+    max-width: 100%;
+}
+
+.btn-primary{
+    background: #936456;
+    border: 1px solid transparent;
+}
+
+.btn-primary:hover{
+    background: #4A312A;
+}
+
+.btn-primary:focus{
+    background: #936456;
+}
+
+.separator{
+    width: 100%;
+    padding:2em;
+}
+
+.row{
+    flex-direction: column;
+}
+
+.col-6{
+    max-width: none;
+    width: 100%;
+}
+
+.card-text{
+    font-weight: 400;
+}
+
+
+@media only screen and (min-width: 1000px){
+
+    .disabled-on-mobile{
+        display: block;
+    }
+
+    #calendrier{
+        width: 50%;
+    }
+
+    .card-heading > .title:before{
+        z-index: 0;
+    }
+
+    .title{
+        padding: 1em;
+        margin-bottom: 0;
+        font-size: 47px;
+    }
+
+    .title:before{
+        content:"";
+        display:inline-block;
+        width: 60%;
+        height:80%;
+        background:url("../images/eucalyptus.png") no-repeat;
+        background-size:100%;
+        top: 110px;
+        left: 22%;
+        position: absolute;
+        z-index: -1;
+        rotate: 180deg;
+    }
+
+    .price--card{
+        flex-direction: row;
+    }
+
+    .row{
+        flex-direction: row;
+    }
+
+    .col-6{
+        max-width: 50%;
+        height: 504px;
+    }
+}
